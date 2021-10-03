@@ -5,18 +5,39 @@
       | |_ ___| | ___  __ _ _ __ __ _ _ __ ___ ______| |__   ___ | |_ ______| |_   _  __ _
       | __/ _ \ |/ _ \/ _` | '__/ _` | '_ ` _ \______| '_ \ / _ \| __|______| | | | |/ _` |
       | ||  __/ |  __/ (_| | | | (_| | | | | | |     | |_) | (_) | |_       | | |_| | (_| |
-       \__\___|_|\___|\__, |_|  \__,_|_| |_| |_|     |_.__/ \___/ \__|      |_|\__,_|\__,_|
+       \__\___|_|\___|\__, |_|  \__,_|_| |_| |_|     |_.__/ \___/ \__|      |_|\__,_|\__,_|jit
                        __/ |
                       |___/
 
       Version 1.10-0
       Copyright (c) 2020 Matthew Hesketh
-      See LICENSE for details
 
       Adapted version of Paul Moore's base64 library updated for Lua 5.2 and upwards.
-      See original license below.
+      See license below.
 ]]
-
+-- https://gist.github.com/2563975
+--
+-- A simple Base64 encoder/decoder that uses a URL safe variant of the standard.
+-- This implementation encodes character 62 as '-' (instead of '+') and character 63 as '_' (instead of '/').
+-- In addition, padding is not used by default.
+-- A full description of the specification can be found here: http://tools.ietf.org/html/rfc4648
+--
+-- To encode, use base64.encode(input), where input is a string of arbitrary bytes.  The output is a Base64 encoded string.
+-- To decode, use base64.decode(input), where input is a Base64 encoded string.  The output is a string of arbitrary bytes.
+--
+-- The library will throw an error on invalid input, you can catch these as such:
+--
+-- local status, result = pcall(base64.decode(invalidInput))
+-- if not status then
+--     print("Error, "..result)
+-- end
+--
+-- If you prefer a different Base64 variant, you can simply change the ENCODABET to your liking.
+-- If you wish to use padding, you can change the PAD value to a non-nil, non-empty string.
+-- The library will still be able to decode non-padded strings if a PAD is given.
+--
+-- For all valid input, input == base64.decode(base64.encode(input)).
+--
 -- Copyright (C) 2012 by Paul Moore
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy

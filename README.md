@@ -1,10 +1,11 @@
-# telegram-bot-lua
+# telegram-bot-luajit
 
-A feature-filled Telegram bot API library written in Lua, created by [Matt](https://t.me/wrxck). This library includes functions that allow you to use any Telegram bot API method. It is frequently updated and also includes extensive tools to reduce the amount of code needed to perform more elaborate and complex actions.
+A feature-filled Telegram bot API library written in Lua, originally created by [Matt](https://t.me/wrxck). This library includes functions that allow you to use any Telegram bot API method. It is frequently updated and also includes extensive tools to reduce the amount of code needed to perform more elaborate and complex actions.
 
 This library was written to complement the "[mattata](https://github.com/wrxck/mattata)" project, allowing anybody to create their own Telegram bot with little coding knowledge needed (that is, except a basic knowledge of Lua and the inspiration provided by [@mattatabot](https://t.me/mattatabot) and this library).
 
-The licensing situation is currently [under investigation](https://github.com/topkecleon/otouto/issues/123), but **don't panic**, it'll get resolved cleanly.
+This is a reasonably soft fork of Matt's project, just to add Lua5.1 compatibility.
+This should enable running with LuaJIT for better performance.
 
 | Contents                                                              |
 |-----------------------------------------------------------------------|
@@ -17,11 +18,11 @@ The licensing situation is currently [under investigation](https://github.com/to
 
 ## Installation
 
-To install this library, make sure you have Lua 5.3 and LuaRocks installed, then run `luarocks install telegram-bot-lua`.
+To install this library, make sure you have Lua 5.3 and LuaRocks installed, then run `luarocks install telegram-bot-luajit`.
 That's it! Now you just need to include it in your bot's source code, with the configure function passing your bot auth token (the one you received from the [BotFather](https://t.me/BotFather)), like this:
 
 ```Lua
-local api = require('telegram-bot-lua.core').configure('bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11')
+local api = require('telegram-bot-luajit.core').configure('bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11')
 ```
 
 Now you're ready to create your own bot!
@@ -45,7 +46,7 @@ function api.on_message(message)
 end
 ```
 
-You'll notice I've used another function from the telegram-bot-lua library we included as `api`. There is a function for every method in the [Telegram bot API](https://core.telegram.org/bots/api). Scroll down to see examples of method-binded functions.
+You'll notice I've used another function from the telegram-bot-luajit library we included as `api`. There is a function for every method in the [Telegram bot API](https://core.telegram.org/bots/api). Scroll down to see examples of method-binded functions.
 
 To handle channel posts (a.k.a. the `update.channel_post` object), you need to use the `api.on_channel_post(channel_post)` function. The example shown below would iterate over every `update.channel_post` object, and reply to channel posts that contain the text `ping` with the word `pong`:
 

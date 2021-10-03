@@ -1,10 +1,13 @@
 local ipsw = {}
 
-local api = require('telegram-bot-lua.core').configure('') -- Insert your token here.
-local tools = require('telegram-bot-lua.tools')
+local api = require('telegram-bot-luajit.core').configure('2040693293:AAHBOzoiRDEVoXtqzdiG0xBlDlEPq-ep5Cw') -- Insert your token here.
+local tools = require('telegram-bot-luajit.tools')
 local https = require('ssl.https')
 local url = require('socket.url')
 local json = require('dkjson')
+if not utf8 then
+    local utf8 = require('examples.utf8')
+end
 
 function ipsw.init()
     ipsw.data = {}

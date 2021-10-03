@@ -1,0 +1,1 @@
+rockspecs/telegram-bot-lua-1.10-0.rockspec

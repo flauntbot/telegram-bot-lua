@@ -5,25 +5,26 @@
       | |_ ___| | ___  __ _ _ __ __ _ _ __ ___ ______| |__   ___ | |_ ______| |_   _  __ _
       | __/ _ \ |/ _ \/ _` | '__/ _` | '_ ` _ \______| '_ \ / _ \| __|______| | | | |/ _` |
       | ||  __/ |  __/ (_| | | | (_| | | | | | |     | |_) | (_) | |_       | | |_| | (_| |
-       \__\___|_|\___|\__, |_|  \__,_|_| |_| |_|     |_.__/ \___/ \__|      |_|\__,_|\__,_|
+       \__\___|_|\___|\__, |_|  \__,_|_| |_| |_|     |_.__/ \___/ \__|      |_|\__,_|\__,_|jit
                        __/ |
                       |___/
 
       Version 1.10-0
       Copyright (c) 2020 Matthew Hesketh
+      Copyright (c) 2021 Chris
       See LICENSE for details
 
 ]]
 
 local tools = {}
-local api = require('telegram-bot-lua.core')
+local api = require('telegram-bot-luajit.core')
 local https = require('ssl.https')
 local http = require('socket.http')
 local socket = require('socket')
 local ltn12 = require('ltn12')
 local json = require('dkjson')
 local utf8 = utf8 or require('lua-utf8') -- Lua 5.2 compatibility.
-local b64url = require('telegram-bot-lua.b64url')
+local b64url = require('telegram-bot-luajit.b64url')
 
 function tools.comma_value(amount)
     amount = tostring(amount)
@@ -78,7 +79,7 @@ end
 
 function tools.round(num, idp)
     if idp and idp > 0 then
-        local mult = 10 ^ idp
+        local mult = bit.bxor(10, idp)
         return math.floor(num * mult + .5) / mult
     end
     return math.floor(num + .5)
@@ -668,8 +669,8 @@ function tools.unpack_file_id(file_id, media_type)
     local version = string.byte(decoded:sub(-1))
     local subversion = (version == 4) and string.byte(decoded:sub(-2, -1)) or 0
     decoded = decoded:sub(9, -1)
-    local file_reference_flag = 1 << 25
-    if not ((file_flags & file_reference_flag) == 0) then
+    local file_reference_flag = bit.lshift(1, 25)
+    if not (bit.band(file_flags, file_reference_flag) == 0) then
         local file_reference_length = string.byte(decoded:sub(1, 1))
         local padding
         decoded = string.char(0) .. decoded:sub(2, -1)
@@ -700,7 +701,7 @@ function tools.unpack_file_id(file_id, media_type)
         payload.secret = secret
         payload.local_id = local_id
     elseif media_type == 'sticker' then
-        payload.user_id = user_id >> 32
+        payload.user_id = bit.rshift(user_id, 32)
     end
     return payload
 end

@@ -5,12 +5,13 @@
       | |_ ___| | ___  __ _ _ __ __ _ _ __ ___ ______| |__   ___ | |_ ______| |_   _  __ _
       | __/ _ \ |/ _ \/ _` | '__/ _` | '_ ` _ \______| '_ \ / _ \| __|______| | | | |/ _` |
       | ||  __/ |  __/ (_| | | | (_| | | | | | |     | |_) | (_) | |_       | | |_| | (_| |
-       \__\___|_|\___|\__, |_|  \__,_|_| |_| |_|     |_.__/ \___/ \__|      |_|\__,_|\__,_|
+       \__\___|_|\___|\__, |_|  \__,_|_| |_| |_|     |_.__/ \___/ \__|      |_|\__,_|\__,_|jit
                        __/ |
                       |___/
 
       Version 1.10-0
       Copyright (c) 2020 Matthew Hesketh
+      Copyright (c) 2021 Chris
       See LICENSE for details
 
 ]]
@@ -21,7 +22,7 @@ local multipart = require('multipart-post')
 local ltn12 = require('ltn12')
 local json = require('dkjson')
 local html = require('htmlEntities')
-local config = require('telegram-bot-lua.config')
+local config = require('telegram-bot-luajit.config')
 
 function api.configure(token, debug)
     if not token or type(token) ~= 'string' then
