@@ -1,0 +1,24 @@
+Source: lua-telegram-bot
+Section: interpreters
+Priority: optional
+Maintainer: Chris <dpkg@chris-nz.com>
+Build-Depends: debhelper (>= 9), dh-lua
+Standards-Version: 4.5.0
+Vcs-Git: ssh://git@scm.opengress.net:59922/diffusion/117/telegram-bot-luajit.git
+Vcs-Browser: https://scm.opengress.net/diffusion/117/
+Homepage: https://scm.opengress.net/diffusion/117/
+
+Package: lua-telegram-bot
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+Pre-Depends: ${misc:Pre-Depends}
+Provides:
+ ${lua:Provides},
+XB-Lua-Versions: ${lua:Versions}
+Description: Pure-lua Telegram Bot API getUpdates library
+ This package contains a library in pure lua,
+ which wraps the Telegram Bot API for use with the getUpdates method.
+ Webhooks method is currently unsupported.
+

@@ -1,0 +1,5 @@
+lua-telegram-bot (1.10.0-1) groovy; urgency=medium
+
+  * Initial release.
+
+ -- Chris <dpkg@chris-nz.com>  Sun, 09 Oct 2021 01:04:51 +1300
