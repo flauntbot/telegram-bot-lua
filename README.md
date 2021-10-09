@@ -18,7 +18,7 @@ This should enable running with LuaJIT for better performance.
 
 ## Installation
 
-To install this library, make sure you have Lua 5.3 and LuaRocks installed, then run `luarocks install telegram-bot-luajit`.
+To install this library (on Ubuntu or similar) Call `sudo apt install lua-telegram-bot`.
 That's it! Now you just need to include it in your bot's source code, with the configure function passing your bot auth token (the one you received from the [BotFather](https://t.me/BotFather)), like this:
 
 ```Lua
@@ -1244,3 +1244,9 @@ api.mask_position():position(
 ```
 
 Each position method requires 4 parameters.
+
+## Advanced Use
+The signature of the configure function is `api.configure(token, debug, endpoint)`.
+You may specify `debug` being true or false, and you may optionally specify an endpoint.
+If an endpoint is not given, it will use the default, which is at api.telegram.org/bot
+Your endpoint MUST be https (for now) and must include the "bot" bit.

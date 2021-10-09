@@ -24,9 +24,12 @@ local json = require('dkjson')
 local html = require('htmlEntities')
 local config = require('telegram-bot-luajit.config')
 
-function api.configure(token, debug)
+function api.configure(token, debug, endpoint)
     if not token or type(token) ~= 'string' then
         token = nil
+    end
+    if endpoint and type(endpoint) == 'string' then
+        config['endpoint'] = endpoint
     end
     api.debug = debug and true or false
     api.token = assert(token, 'Please specify your bot API token you received from @BotFather!')

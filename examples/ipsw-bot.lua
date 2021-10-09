@@ -1,6 +1,6 @@
 local ipsw = {}
 
-local api = require('telegram-bot-luajit.core').configure('2040693293:AAHBOzoiRDEVoXtqzdiG0xBlDlEPq-ep5Cw') -- Insert your token here.
+local api = require('telegram-bot-luajit.core').configure('') -- Insert your token here.
 local tools = require('telegram-bot-luajit.tools')
 local https = require('ssl.https')
 local url = require('socket.url')
