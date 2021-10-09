@@ -3,16 +3,16 @@ Upstream-Name: telegram-bot-luajit
 Upstream-Contact: Chris <dpkg@chris-nz.com>
 Source: https://scm.opengress.net/diffusion/117/
 
-Files: debian/*
-Copyright: 2021 Chris <dpkg@chris-nz.com>
-License: MIT
-
 Files: *
 Copyright: 2021 Chris <dpkg@chris-nz.com>
            2020 Matthew Hesketh <wrxck@users.noreply.github.com>
 License: MIT
 
-Files: src/b64url.lua
+Files: debian/*
+Copyright: 2021 Chris <dpkg@chris-nz.com>
+License: MIT
+
+Files: telegram-bot-luajit/b64url.lua
 Copyright: 2020 Matthew Hesketh <wrxck@users.noreply.github.com>
            2012 Paul Moore
 License: MIT

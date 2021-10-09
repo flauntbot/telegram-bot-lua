@@ -4,15 +4,17 @@ Priority: optional
 Maintainer: Chris <dpkg@chris-nz.com>
 Build-Depends: debhelper (>= 9), dh-lua
 Standards-Version: 4.5.0
-Vcs-Git: ssh://git@scm.opengress.net:59922/diffusion/117/telegram-bot-luajit.git
 Vcs-Browser: https://scm.opengress.net/diffusion/117/
 Homepage: https://scm.opengress.net/diffusion/117/
+# source format is set to native because currently too lazy for gbp...
+# started without it, realised the mistake later
+# will fix... eventually
 
 Package: lua-telegram-bot
 Architecture: all
 Multi-Arch: foreign
 Depends:
- ${misc:Depends},
+ ${misc:Depends}, lua-dkjson, lua-html-entities, lua-lpeg, lua-multipart-post, lua-sec
 Pre-Depends: ${misc:Pre-Depends}
 Provides:
  ${lua:Provides},

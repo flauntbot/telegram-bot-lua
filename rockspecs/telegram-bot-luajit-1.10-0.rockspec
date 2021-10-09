@@ -35,9 +35,9 @@ dependencies = {
 build = {
     type = "builtin",
     modules = {
-        ["telegram-bot-luajit.config"] = "src/config.lua",
-        ["telegram-bot-luajit.core"] = "src/core.lua",
-        ["telegram-bot-luajit.tools"] = "src/tools.lua",
-        ["telegram-bot-luajit.b64url"] = "src/b64url.lua"
+        ["telegram-bot-luajit.config"] = "telegram-bot-luajit/config.lua",
+        ["telegram-bot-luajit.core"] = "telegram-bot-luajit/core.lua",
+        ["telegram-bot-luajit.tools"] = "telegram-bot-luajit/tools.lua",
+        ["telegram-bot-luajit.b64url"] = "telegram-bot-luajit/b64url.lua"
     }
 }
