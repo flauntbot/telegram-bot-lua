@@ -1,1 +1,1 @@
-rockspecs/telegram-bot-lua-1.10-0.rockspec
+rockspecs/telegram-bot-luajit-1.10-0.rockspec
