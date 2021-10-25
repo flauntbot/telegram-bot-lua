@@ -106,12 +106,12 @@ end
 -------------
 
 function api.get_updates(timeout, offset, limit, allowed_updates) -- https://core.telegram.org/bots/api#getupdates
-    assert(endpoint, 'You must specify an endpoint to make this request to!')
+    assert(config.endpoint, 'You must specify an endpoint to make this request to!')
     allowed_updates = type(allowed_updates) == 'table' and json.encode(allowed_updates) or allowed_updates
     local success, res = api.request(
         string.format(
             '%s%s/getUpdates',
-            endpoint,
+            config.endpoint,
             api.token
         ),
         {

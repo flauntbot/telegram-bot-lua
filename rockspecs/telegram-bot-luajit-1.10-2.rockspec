@@ -1,5 +1,5 @@
 package = "telegram-bot-luajit"
-version = "1.10-0"
+version = "1.10-2"
 
 source = {
     url = "ssh://git@scm.opengress.net:59922/diffusion/117/telegram-bot-luajit.git",
