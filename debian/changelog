@@ -1,3 +1,9 @@
+lua-telegram-bot (1.10.3) groovy; urgency=medium
+
+  * Backwards compat fix for string.unpack to unpack tg file ids
+
+ -- Chris <dpkg@chris-nz.com>  Tue, 26 Oct 2021 00:10:25 +1300
+
 lua-telegram-bot (1.10.2) groovy; urgency=medium
 
   * Bugfix for file downloads with custom endpoint
