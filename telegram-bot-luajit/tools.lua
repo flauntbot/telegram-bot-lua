@@ -25,7 +25,7 @@ local ltn12 = require('ltn12')
 local json = require('dkjson')
 local utf8 = utf8 or require('lua-utf8') -- Lua 5.2 compatibility.
 local b64url = require('telegram-bot-luajit.b64url')
-local unpack = unpack or string.unpack
+require('compat53')
 
 function tools.comma_value(amount)
     amount = tostring(amount)
@@ -641,7 +641,7 @@ function tools.unpack_telegram_invite_link(link)
     if not decoded then
         return false, 'Could not decode!'
     end
-    local user_id, chat_id, rand_long = unpack('>IIL', decoded)
+    local user_id, chat_id, rand_long = string.unpack('>IIL', decoded)
     return {
         ['user_id'] = user_id,
         ['chat_id'] = chat_id,
@@ -664,9 +664,9 @@ function tools.unpack_file_id(file_id, media_type)
     if not decoded then
         return false, 'Could not decode!'
     end
-    local file_type = unpack('<b', decoded)
-    local dc_id = unpack('<i', decoded:sub(5, 8))
-    local file_flags = unpack('<i', string.char(0) .. decoded:sub(2, 4))
+    local file_type = string.unpack('<b', decoded)
+    local dc_id = string.unpack('<i', decoded:sub(5, 8))
+    local file_flags = string.unpack('<i', string.char(0) .. decoded:sub(2, 4))
     local version = string.byte(decoded:sub(-1))
     local subversion = (version == 4) and string.byte(decoded:sub(-2, -1)) or 0
     decoded = decoded:sub(9, -1)
@@ -676,14 +676,14 @@ function tools.unpack_file_id(file_id, media_type)
         local padding
         decoded = string.char(0) .. decoded:sub(2, -1)
         if file_reference_length == 254 then
-            file_reference_length = unpack('<i', decoded)
+            file_reference_length = string.unpack('<i', decoded)
             padding = math.abs(-file_reference_length % 4)
         else
             padding = math.abs(file_reference_length % -4)
         end
         decoded = decoded:sub(file_reference_length + padding + 1, -1)
     end
-    local user_id, access_hash = unpack('<ll', decoded)
+    local user_id, access_hash = string.unpack('<ll', decoded)
     local payload = {
         ['file_id'] = file_id,
         ['file_type'] = file_type,
@@ -695,7 +695,7 @@ function tools.unpack_file_id(file_id, media_type)
         ['access_hash'] = access_hash
     }
     if media_type == 'photo' then
-        local encrypted_user_id, new_access_hash, volume_id, secret, _, local_id = unpack('<llllii', decoded)
+        local encrypted_user_id, new_access_hash, volume_id, secret, _, local_id = string.unpack('<llllii', decoded)
         payload.encrypted_user_id = encrypted_user_id
         payload.access_hash = new_access_hash
         payload.volume_id = volume_id
@@ -720,7 +720,7 @@ function tools.unpack_inline_message_id(inline_message_id)
     if not decoded then
         return false, 'Could not decode!'
     end
-    local dc_id, message_id, chat_id, access_hash = unpack('<iiI', decoded)
+    local dc_id, message_id, chat_id, access_hash = string.unpack('<iiI', decoded)
     return {
         ['dc_id'] = dc_id,
         ['message_id'] = message_id,
