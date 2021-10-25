@@ -1,1 +1,0 @@
-rockspecs/telegram-bot-luajit-1.10-0.rockspec

@@ -105,12 +105,13 @@ end
 -- UPDATES --
 -------------
 
-function api.get_updates(timeout, offset, limit, allowed_updates, use_beta_endpoint) -- https://core.telegram.org/bots/api#getupdates
+function api.get_updates(timeout, offset, limit, allowed_updates) -- https://core.telegram.org/bots/api#getupdates
+    assert(endpoint, 'You must specify an endpoint to make this request to!')
     allowed_updates = type(allowed_updates) == 'table' and json.encode(allowed_updates) or allowed_updates
     local success, res = api.request(
         string.format(
-            'https://api.telegram.org/%sbot%s/getUpdates',
-            use_beta_endpoint and 'beta/' or '',
+            '%s%s/getUpdates',
+            endpoint,
             api.token
         ),
         {
@@ -1239,12 +1240,12 @@ function api.process_update(update)
     return false
 end
 
-function api.run(limit, timeout, offset, allowed_updates, use_beta_endpoint)
+function api.run(limit, timeout, offset, allowed_updates)
     limit = tonumber(limit) ~= nil and limit or 1
     timeout = tonumber(timeout) ~= nil and timeout or 0
     offset = tonumber(offset) ~= nil and offset or 0
     while true do
-        local updates = api.get_updates(timeout, offset, limit, allowed_updates, use_beta_endpoint)
+        local updates = api.get_updates(timeout, offset, limit, allowed_updates)
         if updates and type(updates) == 'table' and updates.result then
             for _, v in pairs(updates.result) do
                 api.process_update(v)

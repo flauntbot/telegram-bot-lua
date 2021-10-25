@@ -1,3 +1,10 @@
+lua-telegram-bot (1.10.1) groovy; urgency=medium
+
+  * Fix file download path (custom endpoint)
+  * Make bidirectional polyfill for table.unpack 
+
+ -- Chris <dpkg@chris-nz.com>  Mon, 25 Oct 2021 22:56:00 +1300
+
 lua-telegram-bot (1.10.0) groovy; urgency=medium
 
   * Initial release.

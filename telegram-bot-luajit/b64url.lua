@@ -60,6 +60,7 @@
 
 local b64url = {}
 local bit32 = bit32 or bit or require('bit')
+local unpack = unpack or table.unpack
 assert(bit32, 'You don\'t have a valid bitwise library installed!')
 
 --- octet -> char encoding.
@@ -237,7 +238,7 @@ function b64url.decode(input)
         b = bit32.band(b, 0xff)
         out[#out + 1] = b
     end
-    return string.char(table.unpack(out))
+    return string.char(unpack(out))
 end
 
 return b64url
