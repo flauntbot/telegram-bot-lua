@@ -1,8 +1,8 @@
 package = "telegram-bot-luajit"
-version = "1.10-3"
+version = "1.10-4"
 
 source = {
-    url = "ssh://git@scm.opengress.net:59922/diffusion/117/telegram-bot-luajit.git",
+    url = "https://github.com/flauntbot/telegram-bot-lua",
     dir = "telegram-bot-luajit",
     branch = "main"
 }
@@ -11,7 +11,7 @@ description = {
     summary = "A simple yet extensive Lua library for the Telegram bot API.",
     detailed = "A simple yet extensive Lua library for the Telegram bot API, with many tools and API-friendly functions. Compatible with LuaJIT",
     license = "GPL-3",
-    homepage = "https://scm.opengress.net/diffusion/117/",
+    homepage = "https://github.com/flauntbot/telegram-bot-lua",
     maintainer = "Chris <dpkg@chris-nz.com>"
 }
 
@@ -25,7 +25,7 @@ supported_platforms = {
 dependencies = {
     "dkjson >= 2.5-2",
     "lpeg >= 1.0.1-1",
-    "luasec >= 0.6-1",
+    "luasec >= 0.6-1",a
     "luasocket >= 3.0rc1-2",
     "multipart-post >= 1.1-1",
     "luautf8 >= 0.1.1-1",

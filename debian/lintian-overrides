@@ -1,0 +1,1 @@
+lua-telegram-bot: depends-on-essential-package-without-using-version

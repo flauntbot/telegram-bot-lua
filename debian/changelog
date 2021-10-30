@@ -1,3 +1,9 @@
+lua-telegram-bot (1.10.4) groovy; urgency=medium
+
+  * minor fixes and version bump for public upload 
+
+ -- Chris <dpkg@chris-nz.com>  Sat, 30 Oct 2021 18:07:38 +1300
+
 lua-telegram-bot (1.10.3) groovy; urgency=medium
 
   * Backwards compat fix for string.unpack to unpack tg file ids

@@ -2,7 +2,7 @@
 
 A feature-filled Telegram bot API library written in Lua, originally created by [Matt](https://t.me/wrxck). This library includes functions that allow you to use any Telegram bot API method. It is frequently updated and also includes extensive tools to reduce the amount of code needed to perform more elaborate and complex actions.
 
-This library was written to complement the "[mattata](https://github.com/wrxck/mattata)" project, allowing anybody to create their own Telegram bot with little coding knowledge needed (that is, except a basic knowledge of Lua and the inspiration provided by [@mattatabot](https://t.me/mattatabot) and this library).
+This library was written to complement the "[mattata](https://github.com/flauntbot/mattata)" project, allowing anybody to create their own Telegram bot with little coding knowledge needed (that is, except a basic knowledge of Lua and the inspiration provided by [@mattatabot](https://t.me/mattatabot) and this library).
 
 This is a reasonably soft fork of Matt's project, just to add Lua5.1 compatibility.
 This should enable running with LuaJIT for better performance.
